@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MoodLens</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="logo">MoodLens</div>
+  <button id="themeToggle" class="theme-btn">🌙 Dark</button>
+</header>
+
+<main class="page">
+  <form method="post" class="search-row">
+    <input type="text" name="topic" id="searchInput" placeholder="Search for news topics..." value="{{ topic }}" required />
+    <button type="submit">Analyze Mood</button>
+  </form>
+
+  <div class="categories">
+    <div class="chip active">All</div>
+    <div class="chip">Technology</div>
+    <div class="chip">Business</div>
+    <div class="chip">Sports</div>
+    <div class="chip">Health</div>
+    <div class="chip">World</div>
+    <div class="chip">Entertainment</div>
+    <div class="chip">Science</div>
+    <div class="chip">Environment</div>
+    <div class="chip">Politics</div>
+    <div class="chip">Travel</div>
+  </div>
+
+  {% if mood_data %}
+  <section class="overview">
+    <div class="chart-card">
+      <h2>Sentiment Overview</h2>
+      <img src="{{ chart_path }}" alt="Mood Chart" class="chart-image">
+      <ul class="mood-list">
+        <li><span class="dot positive"></span> Positive: {{ mood_data.results["POSITIVE"] }}</li>
+        <li><span class="dot neutral"></span> Neutral: {{ mood_data.results["NEUTRAL"] }}</li>
+        <li><span class="dot negative"></span> Negative: {{ mood_data.results["NEGATIVE"] }}</li>
+      </ul>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if mood_data and mood_data.analyzed %}
+  <section class="articles">
+    <h2>Articles Analyzed</h2>
+    {% for article in mood_data.analyzed %}
+    <article class="card">
+      <div class="info">
+        <h3><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></h3>
+        <p class="desc">{{ article.description }}</p>
+        <p class="mood">
+          Mood: <strong>{{ article.label }}</strong> (score: {{ article.score }})
+        </p>
+        <a href="{{ article.url }}" target="_blank" class="open-btn">Open Article</a>
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+
+  {% elif topic %}
+    <p class="no-results">No results found for "{{ topic }}". Try another topic.</p>
+  {% endif %}
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const chips = document.querySelectorAll(".chip");
+  const searchInput = document.getElementById("searchInput");
+  const form = document.querySelector(".search-row");
+  const themeToggle = document.getElementById("themeToggle");
+  const body = document.body;
+
+  const savedTheme = localStorage.getItem("darkMode");
+  if (savedTheme === "true") {
+    body.classList.add("dark-mode");
+    themeToggle.textContent = "☀️ Light";
+  }
+
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      chips.forEach((c) => c.classList.remove("active"));
+      chip.classList.add("active");
+      const topic = chip.textContent.trim();
+      if (topic.toLowerCase() !== "all") {
+        searchInput.value = topic;
+        form.submit();
+      }
+    });
+  });
+
+  themeToggle.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+    const isDark = body.classList.contains("dark-mode");
+    themeToggle.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+    localStorage.setItem("darkMode", isDark);
+  });
+});
+</script>
+
+</body>
+</html>
