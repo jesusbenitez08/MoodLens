@@ -61,7 +61,7 @@ def show_chart(results, topic):
     counts = list(results.values())
 
     plt.figure(figsize=(6, 4))
-    plt.bar(moods, counts, color=["#22c55e", "#fbbf24", "#ef4444"])
+    plt.bar(moods, counts, color=["#22c55e",  "#ef4444", "#fbbf24"])
     plt.title(f"Mood Breakdown for '{topic}'")
     plt.xlabel("Mood")
     plt.ylabel("Number of Articles")

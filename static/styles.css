@@ -166,7 +166,7 @@ body {
   margin: 0.25rem 0 0.5rem 0;
 }
 
-/* ✅ Button now visible */
+/* test for the button to be visible */
 .open-btn {
   background-color: #111827;
   color: #fff; /* <- fix for invisible text */
