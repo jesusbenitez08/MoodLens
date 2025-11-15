@@ -17,7 +17,7 @@ def index():
         if topic:
             articles = get_news(topic)
             if articles:
-                mood_counts, analyzed = analyze_sentiments(articles)
+                mood_counts, analyzed, summary = analyze_sentiments(articles)
                 chart_path = show_chart(mood_counts, topic)
 
                 mood_data = {
@@ -31,6 +31,7 @@ def index():
         articles=articles,
         chart_path=chart_path,
         topic=topic,
+        summary=summary,
     )
 
 if __name__ == "__main__":

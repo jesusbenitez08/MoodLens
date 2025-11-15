@@ -36,6 +36,11 @@
   <section class="overview">
     <div class="chart-card">
       <h2>Sentiment Overview</h2>
+
+      {% if summary %}
+        <p class="summary-line">{{ summary }}</p>
+      {% endif %}
+      
       <img src="{{ chart_path }}" alt="Mood Chart" class="chart-image">
       <ul class="mood-list">
         <li><span class="dot positive"></span> Positive: {{ mood_data.results["POSITIVE"] }}</li>

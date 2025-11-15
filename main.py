@@ -44,15 +44,23 @@ def analyze_sentiments(articles):
         else:
             results["NEUTRAL"] += 1
 
+            # test for summary line
         analyzed.append({
             "title": title,
             "label": label,
             "score": round(result["score"], 2),
-            "url": article.get("url", "#"),
-            "description": article.get("description", "No description available.")
+            "description": article.get("description", ""),
+            "url": article.get("url", "#")
         })
 
-    return results, analyzed
+    total=sum(results.values())
+    summary=""
+    if total>0:
+        positive_pct=round((results["POSITIVE"]/total)*100,1)
+        summary=f"News on this topic today is approximately {positive_pct}% positive."
+
+    return results, analyzed, summary
+
 
 # chart
 def show_chart(results, topic):

@@ -233,3 +233,16 @@ body.dark-mode .open-btn {
 body.dark-mode .open-btn:hover {
   background: #d1d5db;
 }
+
+
+/* summary line test */
+.summary-line {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+body.dark-mode .summary-line{
+    color:#e4e4e7;
+}
