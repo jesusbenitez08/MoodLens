@@ -169,7 +169,7 @@ body {
 /* test for the button to be visible */
 .open-btn {
   background-color: #111827;
-  color: #fff; /* <- fix for invisible text */
+  color: #fff; /* test and fix for invisible text */
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 8px;
@@ -189,12 +189,12 @@ body {
 
 /* Dark mode */
 body.dark-mode {
-  background-color: #1f2937;
-  color: #e5e7eb;
+  background-color: #111827;
+  color: #f3f4f6;
 }
 
 body.dark-mode .top-bar {
-  background: #111827;
+  background: #1f2937;
   color: #f9fafb;
 }
 
@@ -207,7 +207,7 @@ body.dark-mode input,
 body.dark-mode button {
   background: #374151;
   color: #f9fafb;
-  border: 1px solid #4b5563;
+  border: 1px solid #6b7280;
 }
 
 body.dark-mode .chip {
@@ -216,22 +216,41 @@ body.dark-mode .chip {
 }
 
 body.dark-mode .chip.active {
-  background: #f9fafb;
-  color: #111827;
+  background: #4f46e5;
+  color: #fff;
+}
+
+body.dark-mode .overview {
+  background: #1f2937;
+  color: #f9fafb;
+  border: 1px solid #374151;
 }
 
 body.dark-mode .card {
-  background: #374151;
+  background: #1f2937;
   color: #f9fafb;
+  border: 1px solid #374151;
+}
+
+body.dark-mode .card h3 a {
+  color: #93c5fd;
+}
+
+body.dark-mode .card h3 a:hover {
+  color: #bfdbfe;
+}
+
+body.dark-mode .desc {
+  color: #cbd5e1;
 }
 
 body.dark-mode .open-btn {
-  background: #f9fafb;
-  color: #111827;
+  background: #4f46e5;
+  color: white;
 }
 
 body.dark-mode .open-btn:hover {
-  background: #d1d5db;
+  background: #6366f1;
 }
 
 
@@ -244,5 +263,5 @@ body.dark-mode .open-btn:hover {
 }
 
 body.dark-mode .summary-line{
-    color:#e4e4e7;
+    color:#f3f4f6;
 }

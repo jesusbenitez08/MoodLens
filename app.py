@@ -10,6 +10,7 @@ def index():
     articles = []
     chart_path = None
     topic = ""
+    summary = None
 
     if request.method == "POST":
         topic = request.form.get("topic", "").strip()
