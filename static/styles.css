@@ -2,6 +2,7 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
+  color: #1f2937; /*for better contrast*/
   margin: 0;
   padding: 0;
   transition: background 0.3s, color 0.3s;
@@ -54,7 +55,7 @@ body {
   flex: 1;
   padding: 0.75rem;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #9ca3af;
 }
 
 .search-row button {
@@ -141,7 +142,7 @@ body {
 }
 
 .card {
-  background: #fff;
+  background: #fafafa;
   padding: 1rem 1.25rem;
   border-radius: 12px;
   margin-bottom: 1rem;
@@ -159,7 +160,7 @@ body {
 
 .desc {
   margin: 0.5rem 0 0.75rem 0;
-  color: #4b5563;
+  color: #374151;
 }
 
 .mood {
@@ -264,4 +265,9 @@ body.dark-mode .open-btn:hover {
 
 body.dark-mode .summary-line{
     color:#f3f4f6;
+}
+
+.articles h2,
+.overview h2 {
+  color:#111827;
 }
