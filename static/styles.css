@@ -14,8 +14,9 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, #ffffff, #f9fafb); /*test gradient*/
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid #e5e7eb; /*border and Shadow */
 }
 
 .logo {
@@ -90,6 +91,10 @@ body {
 .chip.active {
   background: #111827;
   color: #fff;
+}
+
+.chip:hover {
+  background: #d1d5db;
 }
 
 /* Overview section */
@@ -270,4 +275,15 @@ body.dark-mode .summary-line{
 .articles h2,
 .overview h2 {
   color:#111827;
+}
+
+/* test for Fade*/
+.articles, 
+.overview {
+  animation: fadeIn 0.35s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
